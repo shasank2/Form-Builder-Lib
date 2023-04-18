@@ -15,8 +15,8 @@ const FormBuild = (props: Props) => {
     <>
       <Container fluid>
         <div className='container-grid'>
-          <DraggableZone selectedItem={selectedItem} />
-          <DroppableZone setSelectedItem={setSelectedItem} />
+          <DraggableZone selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
+          <DroppableZone selectedItem={selectedItem} setSelectedItem={setSelectedItem} />
           <PreviewZone />
         </div>
       </Container>
