@@ -5,10 +5,11 @@ import "./dropdownoptions.css"
 type Props = {
   individualItemState: any
   setIndividualItemState: any
+  selectedItem:any
 }
 
 const DropDownOptions = (props: Props) => {
-  const { individualItemState, setIndividualItemState } = props
+  const { individualItemState, setIndividualItemState,selectedItem } = props
   return (
     <>
       <Form.Check
@@ -32,6 +33,7 @@ const DropDownOptions = (props: Props) => {
           <CustomOptions
             individualItemState={individualItemState}
             setIndividualItemState={setIndividualItemState}
+            selectedItem={selectedItem}
           />
       }
     </>

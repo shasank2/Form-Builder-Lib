@@ -109,6 +109,7 @@ const CustomizeZone = (props: Props) => {
             <DropDownOptions
               individualItemState={individualItemState}
               setIndividualItemState={setIndividualItemState}
+              selectedItem={selectedItem}
             /> : null
 
       }
