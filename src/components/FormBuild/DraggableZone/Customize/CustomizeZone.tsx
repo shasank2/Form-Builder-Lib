@@ -22,7 +22,6 @@ const CustomizeZone = (props: Props) => {
     label: "",
     isRequried: false,
     validationMessage: "",
-    dropdown: null,
   })
 
   useEffect(() => {

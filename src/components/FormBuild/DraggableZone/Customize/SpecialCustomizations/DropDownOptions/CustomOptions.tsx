@@ -15,61 +15,51 @@ const CustomOptions = (props: Props) => {
 
   useEffect(() => {
     let foundSelectedObject: any = formState.find((elem: any) => elem.id === selectedItem)
-    if (foundSelectedObject.dropdown && foundSelectedObject.dropdown.customOptions?.length !== 0) {
+    if (foundSelectedObject.options && foundSelectedObject.options?.length !== 0) {
       setIndividualItemState((prev: any) => ({
         ...prev,
         ...foundSelectedObject,
-        dropdown: {
-          ...foundSelectedObject.dropdown,
-          source: "custom",
-          customOptions: [...foundSelectedObject.dropdown?.customOptions]
-        }
+        options: [...foundSelectedObject.options]
       }))
     } else {
-      setIndividualItemState((prev: any) => ({ ...prev, dropdown: { ...prev.dropdown, customOptions: [] } }))
+      setIndividualItemState((prev: any) => ({ ...prev, options: [] }))
     }
 
   }, [selectedItem])
 
   const handleAddOption = () => {
     setIndividualItemState((prev: any) => ({
-      ...prev, dropdown: {
-        ...prev.dropdown,
-        customOptions: [
-          ...prev.dropdown.customOptions,
-          { label: "", value: "" }
-        ]
-      }
+      ...prev,
+      options: [
+        ...prev.options,
+        { label: "", value: "" }
+      ]
     }))
   }
 
   const handleChange = (target: any, index: number) => {
-    let newOptionList = individualItemState.dropdown?.customOptions
+    let newOptionList = individualItemState.options
     newOptionList[index][target.name] = target.value
     setIndividualItemState((prev: any) => ({
-      ...prev, dropdown: {
-        ...prev.dropdown,
-        customOptions: newOptionList
-      }
+      ...prev,
+      options: newOptionList
     }))
   }
 
   const handleRemoveOption = (index: number) => {
-    let newOptionList = individualItemState.dropdown?.customOptions
+    let newOptionList = individualItemState.options
     newOptionList.splice(index, 1)
 
     setIndividualItemState((prev: any) => ({
-      ...prev, dropdown: {
-        ...prev.dropdown,
-        customOptions: newOptionList
-      }
+      ...prev,
+      options: newOptionList
     }))
   }
 
   return (
     <div className='custom-option-container'>
       {
-        individualItemState.dropdown?.customOptions?.map((elem: any, index: number) => {
+        individualItemState.options?.map((elem: any, index: number) => {
           return (
             <div className='option-card' key={index}>
               <div className='d-flex justify-content-between' >
@@ -83,14 +73,14 @@ const CustomOptions = (props: Props) => {
                 <Form.Label column="sm" >Label</Form.Label>
                 <Form.Control type="text" autoComplete="new-password" name='label'
                   onChange={(e: any) => handleChange(e.target, index)}
-                  value={individualItemState.dropdown?.customOptions[index].label}
+                  value={individualItemState.options[index].label}
                 />
               </Form.Group>
               <Form.Group>
                 <Form.Label column="sm" >Value</Form.Label>
                 <Form.Control type="text" autoComplete="new-password" name='value'
                   onChange={(e: any) => handleChange(e.target, index)}
-                  value={individualItemState.dropdown?.customOptions[index].value}
+                  value={individualItemState.options[index].value}
                 />
               </Form.Group>
             </div>
