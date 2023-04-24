@@ -3,6 +3,7 @@ import './customizezone.css'
 import { useContext, useEffect, useState } from 'react';
 import { GlobalContext } from '../../../../context/GlobalContext';
 import DropDownOptions from './SpecialCustomizations/DropDownOptions/DropDownOptions';
+import * as Yup from 'yup';
 
 type Props = {
   selectedItem: string | null
@@ -44,6 +45,8 @@ const CustomizeZone = (props: Props) => {
   }
 
 
+
+
   return (
     <Form className='customize-container'>
 
@@ -55,6 +58,7 @@ const CustomizeZone = (props: Props) => {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Label</Form.Label>
                 <Form.Control type="text" autoComplete="new-password"
+                  name='label'
                   onChange={(e: any) => setIndividualItemState((prev: any) => ({ ...prev, label: e.target.value }))}
                   value={individualItemState.label}
                 />
@@ -63,6 +67,7 @@ const CustomizeZone = (props: Props) => {
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Name</Form.Label>
                 <Form.Control type="text" autoComplete="new-password"
+                  name='name'
                   onChange={(e: any) => setIndividualItemState((prev: any) => ({
                     ...prev,
                     name: e.target.value.toLowerCase()
@@ -90,6 +95,7 @@ const CustomizeZone = (props: Props) => {
                 className="mb-3"
                 onChange={(e) => { setIndividualItemState((prev: any) => ({ ...prev, isRequried: e.target.checked })) }}
                 checked={individualItemState.isRequried}
+                name='isRequried'
               />
 
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -99,6 +105,7 @@ const CustomizeZone = (props: Props) => {
                   autoComplete="new-password"
                   onChange={(e: any) => setIndividualItemState((prev: any) => ({ ...prev, validationMessage: e.target.value }))}
                   value={individualItemState.validationMessage}
+                  name='validationMessage'
                 />
               </Form.Group>
             </div>
